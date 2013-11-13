@@ -26,7 +26,7 @@ article, aside, figure, footer, header, hgroup, nav, section {
 
 body { 
   font: normal .80em arial, sans-serif;
-  background: #000 url(../images/back.png) no-repeat center fixed;
+  background: #000 url(../images/fondop1.png) no-repeat center fixed;
   color: #403838;
 }
 
@@ -165,7 +165,7 @@ ol li {
 
 #logo h1 a {
   text-decoration: none;
-  color: #FFF;
+  color: #0404B4;
 }
 
 #logo h1 a .logo_colour { 
@@ -173,7 +173,7 @@ ol li {
 }
 
 #logo a:hover .logo_colour { 
-  color: #FFF;
+  color: #B40404;
   text-decoration: none;
 }
 
@@ -257,6 +257,7 @@ nav2 {
 }
   
 .sidebar h3, .content h1 { 
+  position:left;
   padding: 0 5px 20px 0
   font: 230% 'News Cycle', arial, sans-serif;
   text-shadow:  #323232 1px 1px;
@@ -319,7 +320,7 @@ footer {
   border-radius: 0 0 10px 10px;
   -moz-border-radius: 0 0 10px 10px;
   -webkit-border: 0 0 10px 10px;
-  background: transparent url(../images/footer.png) repeat;
+  background: transparent url(../images/footer2.png) repeat;
 }
 
 footer a, footer a:hover { 
@@ -333,7 +334,13 @@ footer a:hover {
 }
 
 .form_settings { 
-  margin: 15px 0 0 0;
+  text-align:left;
+  position: relative; 
+  margin: 20px auto; 
+  border-radius: 7px 7px 7px 7px;
+  -moz-border-radius: 7px 7px 7px 7px;
+  -webkit-border: 7px 7px 7px 7px;
+  padding: 0 15px 5px 13px; 
 }
 
 .form_settings p { 
@@ -372,10 +379,38 @@ footer a:hover {
   -moz-border-radius: 7px 7px 7px 7px;
   -webkit-border: 7px 7px 7px 7px;  
 }
-
+.form_settings .submit1 { 
+  font: 100% arial; 
+  border: 0; 
+  width: 50px; 
+  margin: 0 0 0 1px; 
+  height: 25px;
+  padding: 2px 0 3px 0;
+  cursor: pointer; 
+  background: #3B3B3B; 
+  color: #FFF;
+  border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border: 5px 5px 5px 5px;  
+}
 .form_settings .submit2 { 
   font: 100% arial; 
   border: 0; 
+  width: 150px; 
+  margin: 0 0 0 20px; 
+  height: 33px;
+  padding: 2px 0 3px 0;
+  cursor: pointer; 
+  background: #3B3B3B; 
+  color: #FFF;
+  border-radius: 7px 7px 7px 7px;
+  -moz-border-radius: 7px 7px 7px 7px;
+  -webkit-border: 7px 7px 7px 7px;  
+}
+.form_settings .submit3 { 
+  font: 100% arial; 
+  border: 0; 
+  text-align:center;
   width: 150px; 
   margin: 0 0 0 20px; 
   height: 33px;
@@ -414,20 +449,21 @@ footer a:hover {
 }
   
 table { 
-  margin: 10px 0 30px 0;
+  margin: 5px 0 10px 0;
+  border-style:solid;	
 }
 
 table tr th, table tr td { 
   background: #3B3B3B;
   color: #FFF;
-  padding: 7px 4px;
-  text-align: left;
+  padding: 2px 2px;
+  text-align: center;
 }
   
 table tr td { 
   background: #FFF;
   color: #47433F;
-  border-top: 1px solid #ddd;
+  border-top: 0,5px solid #F2F2F2;
 }
 
 /* Image Transitions */
@@ -573,7 +609,7 @@ ul#nav2 {
 }
 
 ul#nav2 ul { 
-  background: url(../images/menubar.png) repeat;
+  background: url(../images/menubar3.png) repeat;
   padding-bottom: 15px;
 }
 
