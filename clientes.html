@@ -43,10 +43,48 @@ xmlhttp.onreadystatechange=function()
 
   }
 
-xmlhttp.open("GET","selectEmpresa.php");
+xmlhttp.open("GET","selectEmpresa.php?parametro=n");
 
 xmlhttp.send();
 
+</script>
+
+<script>
+
+function ordenarTabla(orden)
+{
+	var xmlhttp;
+
+if (window.XMLHttpRequest)
+
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+
+  xmlhttp=new XMLHttpRequest();
+
+  }else{// code for IE6, IE5
+
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+
+  }
+
+xmlhttp.onreadystatechange=function()
+
+  {
+
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+
+    {
+
+    document.getElementById("selectEmpresa").innerHTML=xmlhttp.responseText;
+
+    }
+
+  }
+
+xmlhttp.open("GET","selectEmpresa.php?parametro=" + orden);
+
+xmlhttp.send();
+}
 </script>
 
 </head>
@@ -103,10 +141,7 @@ xmlhttp.send();
 			<li><a href="index.html">Salir</a>
             		</ul></li>
         </ul>
-	<!-- Menu -->
-
-	
-	
+	<!-- Menu -->	
 
 	</nav>
 	</header>
