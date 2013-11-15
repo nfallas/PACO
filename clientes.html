@@ -212,15 +212,22 @@ xmlhttp.send();
 		<form action="#" method="post">
 			<!-- Usuario -->	
 			<h2> Nuevo cliente </h2>
-	
-			<p><br/><h4>Nombre</h4><input type="text" name="name" value=""/>	</p>
-			<p><br/><h4>Primer Apellido</h4><input type="text" name="name" value=""/>	</p>
-			<p><br/><h4>Segundo Apellido</h4><input type="text" name="name" value=""/>	</p>
-			<p><br/><h4>Cédula</h4><input type="text" name="name" value=""/>	</p>
-			<p><br/><h4>Dirección de Correo</h4><input type="email" name="email" value=""/>	</p>
-			<p><br/><h4>Teléfono</h4><input type="text" name="tel" value=""/>	</p>
-
-			<a href="#"><input class="submit" type="submit" name="name" value="Insertar" position="absolute"/></a>
+		<table>
+			<tr>
+				<td>	<p><br/><h4>Nombre</h4><input type="text" name="name" value=""/>	</p>	</td>
+				<td>	<p><br/><h4>Primer Apellido</h4><input type="text" name="name" value=""/>	</p>	</td>
+				<td>	<p><br/><h4>Segundo Apellido</h4><input type="text" name="name" value=""/>	</p>	</td>
+			</tr>
+			<tr>
+				<td>	<p><br/><h4>Cédula</h4><input type="text" name="name" value=""/>	</p>	</td>
+				<td>	<p><br/><h4>Dirección de Correo</h4><input type="email" name="email" value=""/>	</p> 	</td>
+				<td>	<p><br/><h4>Teléfono</h4><input type="text" name="tel" value=""/>	</p>	</td>
+			</tr>
+			<tr>
+				<td></td><td></td>
+			   <td><a href="#"><input class="submit" type="submit" name="name" value="Insertar" position="absolute"/></a> </td>
+			</tr>
+		</table>
 		</form>
 	</div>
   </div>
@@ -229,23 +236,25 @@ xmlhttp.send();
 	<div class="form_settings">
 		<!-- Usuario -->	
 		<h2> Nueva Empresa </h2>
-	
-		<p><br/><h4>Nombre de la Empresa</h4><input type="text" name="name" value=""/>	</p>
-		<p><br/><h4>Cliente</h4>
-			<select id="id" name="name">
-				<option value="1">Cliente 1</option>
-				<option value="2">Cliente 2</option>
-			</select></p>
-		<p><br/><h4>Vendedor</h4>
-			<select id="id" name="name">
-				<option value="1">Vendedor 1</option>
-				<option value="2">Vendedor 2</option>
-			</select></p>
-		<p><br/><h4>Dirección</h4><input type="text" name="name" value=""/>	</p>
-		<p><br/><h4>Dirección de Correo</h4><input type="email" name="email" value=""/>	</p>
-		<p><br/><h4>Teléfono</h4><input type="text" name="tel" value=""/>	</p>
+		<table>
+			<tr>
+			<p><br/><h4>Nombre de la Empresa</h4><input type="text" name="name" value=""/>	</p>
+			<p><br/><h4>Cliente</h4>
+				<select id="id" name="name">
+					<option value="1">Cliente 1</option>
+					<option value="2">Cliente 2</option>
+				</select></p>
+			<p><br/><h4>Vendedor</h4>
+				<select id="id" name="name">
+					<option value="1">Vendedor 1</option>
+					<option value="2">Vendedor 2</option>
+				</select></p>
+			<p><br/><h4>Dirección</h4><input type="text" name="name" value=""/>	</p>
+			<p><br/><h4>Dirección de Correo</h4><input type="email" name="email" value=""/>	</p>
+			<p><br/><h4>Teléfono</h4><input type="text" name="tel" value=""/>	</p>
 
-		<a href="#"><input class="submit" type="submit" name="name" value="Insertar" position="absolute"/></a>
+			<a href="#"><input class="submit" type="submit" name="name" value="Insertar" position="absolute"/></a>
+		</table>
 		
 	</div>
   </div>
