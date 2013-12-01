@@ -86,7 +86,6 @@ xmlhttp.open("GET","selectEmpresa.php?parametro=" + orden);
 
 xmlhttp.send();
 }
-<<<<<<< HEAD
 
 function buscarCliente()
 {
@@ -122,8 +121,6 @@ xmlhttp.open("GET","buscarEmpresa.php?parametro=" + document.getElementById("bus
 
 xmlhttp.send();
 }
-=======
->>>>>>> d67900bf56b239f4764ad59350203ebd57362591
 </script>
 
 </head>
@@ -195,15 +192,9 @@ xmlhttp.send();
 				<!-- Sub Menu -->
 				<div class="form_settings">
 					<!-- Buscar -->
-<<<<<<< HEAD
 					<p><br/><h4>Buscar Empresas por Cliente</h4><input id="buscarCliente" type="text" name="name" value="digite cliente"/>	
 						
 					<input class="submit" type="submit" name="name" value="Buscar" onclick="buscarCliente()"/>			
-=======
-					<p><br/><h4>Buscar Empresas por Cliente</h4><input type="text" name="name" value="digite cliente"/>	
-						<a href="#" rel="facybox">
-						<input class="submit" type="submit" name="name" value="Buscar"/></a>			
->>>>>>> d67900bf56b239f4764ad59350203ebd57362591
 					</p>
 					<p><br/><h4>Buscar Empresas por Vendedor</h4><input type="text" name="name" value="digite vendedor"/>	
 						<a href="#" rel="facybox">
@@ -349,7 +340,6 @@ xmlhttp.send();
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
 	
-<<<<<<< HEAD
 	$vacio = false;
 	$mensaje = 'Es necesario que llene los siguientes espacios:';
 
@@ -378,26 +368,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		$mensaje .= '\n-Primer Apellido';
 
 		}
-=======
-	if (empty($_POST["nombreCliente"]))
-		{
-		echo '<SCRIPT language="JavaScript"> 
-		alert("No hay nombre");
-		jQuery.facybox({ div: \'#nuevoCliente\' });
-		$("#NomErrCliente").append("algo pasaaaa");
-	 </script>';
-		$nomErr = "Se requiere el nombre salga salga salga salga";}
-	else
-		{$nombre = test_input($_POST["nombreCliente"]);}
-
-	if (empty($_POST["ap1Cliente"]))
-		{$ap1Err = test_input($_POST["ap1Cliente"]);}
->>>>>>> d67900bf56b239f4764ad59350203ebd57362591
 	else
 		{$primer_apellido = test_input($_POST["ap1Cliente"]);}
 
 	if (empty($_POST["ap2Cliente"]))
-<<<<<<< HEAD
 		{
 			$segundo_apellido = "";
 		}
@@ -409,14 +383,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		$vacio = true;
 		$mensaje .= '\n-Correo';
 		}
-=======
-		{$segundo_apellido = "";}
-	else
-		{$segundo_apellido = $segundo_apellido = test_input($_POST["ap2Cliente"]);}
-
-	if (empty($_POST["emailCliente"]))
-		{$correoErr = "Falta el correo";}
->>>>>>> d67900bf56b239f4764ad59350203ebd57362591
 	else
 		{$correo = test_input($_POST["emailCliente"]);}
 
@@ -426,7 +392,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		{$telefono = test_input($_POST["telCliente"]);}
 
 	if (empty($_POST["cedulaCliente"]))
-<<<<<<< HEAD
 		{
 
 		$vacio = true;
@@ -451,20 +416,6 @@ function test_input($data)
      $data = stripslashes($data);
      $data = htmlspecialchars($data);
      return $data;
-=======
-		{$identiErr = "Falta la identificacion/cedula";}
-	else
-		{$identificacion = test_input($_POST["cedulaCliente"]);}
-
-}
-
-function text_input($data)
-{
-	$data = trim($data);
-	$data = stripslashes($data);
-	$data = htmlspecialchars($data);
-	return $data;
->>>>>>> d67900bf56b239f4764ad59350203ebd57362591
 }
 
 //validacion
