@@ -87,7 +87,7 @@ xmlhttp.open("GET","selectEmpresa.php?parametro=" + orden);
 xmlhttp.send();
 }
 
-function buscarCliente()
+function buscarCliente(tipo)
 {
 	var xmlhttp;
 
@@ -116,8 +116,16 @@ xmlhttp.onreadystatechange=function()
     }
 
   }
-alert(document.getElementById("buscarCliente").innerHTML);
-xmlhttp.open("GET","buscarEmpresa.php?parametro=" + document.getElementById("buscarCliente").innerHTML);
+
+var elemento = "";
+
+if(tipo == 'cliente'){
+	elemento = document.getElementById("buscarCliente").value;
+}else{
+	elemento = document.getElementById("buscarVendedor").value;
+}
+
+xmlhttp.open("GET","buscarEmpresa.php?parametro=" + elemento + "&tipo=" + tipo);
 
 xmlhttp.send();
 }
@@ -194,11 +202,10 @@ xmlhttp.send();
 					<!-- Buscar -->
 					<p><br/><h4>Buscar Empresas por Cliente</h4><input id="buscarCliente" type="text" name="name" value="digite cliente"/>	
 						
-					<input class="submit" type="submit" name="name" value="Buscar" onclick="buscarCliente()"/>			
+					<input class="submit" type="submit" name="name" value="Buscar" onclick="buscarCliente('cliente')"/>			
 					</p>
-					<p><br/><h4>Buscar Empresas por Vendedor</h4><input type="text" name="name" value="digite vendedor"/>	
-						<a href="#" rel="facybox">
-						<input class="submit" type="submit" name="name" value="Buscar"/></a>
+					<p><br/><h4>Buscar Empresas por Vendedor</h4><input id="buscarVendedor" type="text" name="name" value="digite vendedor"/>	
+						<input class="submit" type="submit" name="name" value="Buscar" onclick="buscarCliente('empresa')"/>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

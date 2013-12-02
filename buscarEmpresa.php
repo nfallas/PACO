@@ -8,8 +8,12 @@ if (!$con)
   die('Could not connect: ' . mysqli_error($con));
   }
 
+if($_GET['tipo'] == 'cliente')
+{
 $select = "SELECT empresa.id_empresa, empresa.nombre, vendedor.nombre AS vendedor, cliente.nombre AS cliente, empresa.correo, empresa.telefono, empresa.direccion FROM empresa, cliente, vendedor WHERE empresa.cliente = cliente.id_cliente AND empresa.vendedor = vendedor.id_vendedor AND cliente.nombre LIKE '" . $_GET['parametro'] . "%';";
-
+}else{
+$select = "SELECT empresa.id_empresa, empresa.nombre, vendedor.nombre AS vendedor, cliente.nombre AS cliente, empresa.correo, empresa.telefono, empresa.direccion FROM empresa, cliente, vendedor WHERE empresa.cliente = cliente.id_cliente AND empresa.vendedor = vendedor.id_vendedor AND vendedor.nombre LIKE '" . $_GET['parametro'] . "%';";
+}
 
 $result = mysqli_query($con, $select);
 
