@@ -79,23 +79,17 @@ h6 {
   color: #362C20;
 }
 
-a2 { 
-  background: transparent;
-  outline: none;
-  text-decoration: none;
-  color: #000;
-}
 
 a, a:hover { 
   background: transparent;
   outline: none;
   text-decoration: none;
-  color: #FFFFFF;
+  color: #47433F;
 }
 
 a:hover { 
   text-decoration: none;
-  color: #E6E6E6;
+  color: #6E6E6E
 }
 
 blockquote { 
@@ -392,6 +386,48 @@ footer a:hover {
   -moz-border-radius: 7px 7px 7px 7px;
   -webkit-border: 7px 7px 7px 7px;  
 }
+.form_settings .submitE3 { 
+  font: 100% arial; 
+  border: 0; 
+  width: 150px; 
+  margin: 0 0 0 20px; 
+  height: 33px;
+  padding: 2px 0 3px 0;
+  cursor: pointer; 
+  background: #A4A4A4; 
+  color: #FFF;
+  border-radius: 7px 7px 7px 7px;
+  -moz-border-radius: 7px 7px 7px 7px;
+  -webkit-border: 7px 7px 7px 7px;  
+}
+.form_settings .submitE2 { 
+  font: 100% arial; 
+  border: 0; 
+  width: 100px; 
+  margin: 0 0 0 20px; 
+  height: 33px;
+  padding: 2px 0 3px 0;
+  cursor: pointer; 
+  background: #A4A4A4; 
+  color: #FFF;
+  border-radius: 7px 7px 7px 7px;
+  -moz-border-radius: 7px 7px 7px 7px;
+  -webkit-border: 7px 7px 7px 7px;  
+}
+.form_settings .submitE { 
+  font: 100% arial; 
+  border: 0; 
+  width: 75px; 
+  margin: 0 0 0 10px; 
+  height: 33px;
+  padding: 2px 0 3px 0;
+  cursor: pointer; 
+  background: #A4A4A4; 
+  color: #FFF;
+  border-radius: 7px 7px 7px 7px;
+  -moz-border-radius: 7px 7px 7px 7px;
+  -webkit-border: 7px 7px 7px 7px;  
+}
 .form_settings .submit1 { 
   font: 100% arial; 
   border: 0; 
@@ -475,7 +511,7 @@ table {
 }
 
 table tr th, table tr td { 
-  background: #3B3B3B;
+  background: #A4A4A4;
   color: #FFF;
   padding: 2px 2px;
   text-align: center;

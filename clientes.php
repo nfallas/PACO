@@ -3,7 +3,6 @@
 <head>
 
 <title>Paco - Los Leones - Castro Fallas</title>
-
   <meta name="description" content="website description" />
   <meta name="keywords" content="website keywords, website keywords" />
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
@@ -166,7 +165,7 @@ xmlhttp.send();
 
         <ul class="sf-menu" id="nav">
 		<li><a href="inicio.html">Inicio</a></li>
-		<li><a href="clientes.php">Clientes</a></li>
+		<li><a href="clientes.html">Clientes</a></li>
 		<li><a href="#">Bodega</a>
 			<ul>
         		<li><a href="bodega_inventario.html">Inventario</a></li>
@@ -219,7 +218,7 @@ xmlhttp.send();
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<!-- Botones -->
 					  <a href="#nuevoCliente" rel="facybox">
-						<input class="submit" type="submit" name="name" value="Nuevo Cliente"/></a>
+						<input class="submit" type="submit" name="name" value="Nuevo Dueño"/></a>
 					  <a href="#nuevaEmpresa" rel="facybox">
 						<input class="submit" type="submit" name="name" value="Nueva Empresa"/></a>
 					</p>
@@ -232,7 +231,8 @@ xmlhttp.send();
 
 			<div id="selectEmpresa">
 			</div>
-
+			<p><a href="#" rel="facybox">
+				<input class="submitE" type="submit" name="name" value="Eliminar"/></a></p
 
 
        		</div><!--sidebar1-->
@@ -312,6 +312,47 @@ xmlhttp.send();
 		
 	</div>
   </div>
+  <div id="info" style="display:none;">
+	<div class="form_settings">
+		<form>		
+		<!--<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>#info" >-->
+			<!-- Usuario -->	
+			<h2> Información </h2>
+
+		<table>
+			<tr>
+				<td>	<p><br/><h4>Nombre</h4><input type="text" name="nombre" value=":S"/> </p>	</td>
+				<td>	<p><br/><h4>Primer Apellido</h4><input type="text" name="ap1Cliente" value=":S"/>	</p>	</td>
+				<td>	<p><br/><h4>Segundo Apellido</h4><input type="text" name="ap2Cliente" value=":S"/>	</p>	</td>
+			</tr>
+			<tr>
+				<td>	<p><br/><h4>Cédula</h4><input type="text" name="cedulaCliente" value=":S"/>	</p>	</td>
+				<td>	<p><br/><h4>Dirección de Correo</h4><input type="text" name="emailCliente" value=":S"/>	</p> 	</td>
+				<td>	<p><br/><h4>Teléfono</h4><input type="text" name="telCliente" value=":S"/>	</p>	</td>
+			</tr>
+		</table>
+		<!-- Botones -->
+		<p text-align="right">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+		<a href="#"><input class="submitE3" type="submit" name="name" value="Guardar Cambios" position="absolute"/></a>
+		<a href="#"><input class="submitE2" type="submit" name="name" value="Eliminar" position="absolute"/></a></p>
+
+<p id="response"></p>
+		</form>
+	</div>
+  </div>
   <!-- SuperPoner Info -->				
 
 	<!-- javascript at the bottom for fast page loading -->
@@ -347,11 +388,8 @@ xmlhttp.send();
       		}).trigger("click");
       		});
   	</script>
-
-
 <?php
 //validacion
-
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
 	
