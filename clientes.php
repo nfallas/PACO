@@ -129,6 +129,55 @@ xmlhttp.open("GET","buscarEmpresa.php?parametro=" + elemento + "&tipo=" + tipo);
 
 xmlhttp.send();
 }
+
+function agregarDel(id)
+{
+	if(document.getElementById(id).checked)
+	{
+		eliminar.push(document.getElementById(id).name);
+	}else{
+		var aux = eliminar.indexOf(id);
+		eliminar.splice(id);
+	}
+eliminar.push(document.getElementById(id).name);
+}
+
+function eliminar()
+{
+	for (var i=0;i<eliminar.length;i++){ //empieza for
+		var xmlhttp;
+
+if (window.XMLHttpRequest)
+
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+
+  xmlhttp=new XMLHttpRequest();
+
+  }else{// code for IE6, IE5
+
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+
+  }
+
+xmlhttp.onreadystatechange=function()
+
+  {
+
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+
+    {
+
+    document.getElementById("selectEmpresa").innerHTML=xmlhttp.responseText;
+
+    }
+
+  }
+
+xmlhttp.open("GET","eliminarEmpresa.php?parametro=" + eliminar[i]);
+
+xmlhttp.send();
+	} //termina for
+}
 </script>
 
 </head>
@@ -231,8 +280,8 @@ xmlhttp.send();
 
 			<div id="selectEmpresa">
 			</div>
-			<p><a href="#" rel="facybox">
-				<input class="submitE" type="submit" name="name" value="Eliminar"/></a></p
+			<p>
+				<input class="submitE" type="submit" name="name" value="Eliminar" onclick="eliminar()"/></p
 
 
        		</div><!--sidebar1-->
@@ -264,10 +313,10 @@ xmlhttp.send();
 	<div class="form_settings">
 		<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>#nuevoCliente" >
 			<!-- Usuario -->	
-			<h2> Nuevo cliente </h2>
+			<h2> Nuevo cliente </h2><p id="rueba">prueba</p>
 		<table>
 			<tr>
-				<td>	<p><br/><h4>Nombre</h4><input type="text" name="nombreCliente" value=""/> </p>	</td>
+				<td>	<p><br/><h4>Nombre</h4><input id="inputCliente" type="text" name="nombreCliente"/> </p>	</td>
 				<td>	<p><br/><h4>Primer Apellido</h4><input type="text" name="ap1Cliente" value=""/>	</p>	</td>
 				<td>	<p><br/><h4>Segundo Apellido</h4><input type="text" name="ap2Cliente" value=""/>	</p>	</td>
 			</tr>
@@ -388,6 +437,18 @@ xmlhttp.send();
       		}).trigger("click");
       		});
   	</script>
+
+
+<script>
+
+
+var eliminar = new Array();
+ 
+
+
+</script>
+
+
 <?php
 //validacion
 if ($_SERVER["REQUEST_METHOD"] == "POST")
@@ -411,6 +472,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		}
 	else
 		{
+		//echo "<SCRIPT language=\"JavaScript\">
+		//document.getElementById(\"nombreCliente\").value=\"mafe\";
+		//</script>";
 		$nombre = test_input($_POST["nombreCliente"]);
 		}
 
@@ -453,6 +517,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		}
 	else
 		{$identificacion = test_input($_POST["cedulaCliente"]);}
+
+	//echo "<script>
+	//	document.getElementById(\"rueba\").innerHTML=\"caca\";
+	//	document.getElementById(\"inputCliente\").value=\"mafe\";
+//</script>";
 
 	if($vacio)
 	{	
