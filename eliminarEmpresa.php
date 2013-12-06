@@ -8,14 +8,8 @@ if (!$con)
   die('Could not connect: ' . mysqli_error($con));
   }
 
-if($_GET['parametro'] != "n")
-{
-$select = "SELECT empresa.id_empresa, empresa.nombre, vendedor.nombre AS vendedor, cliente.nombre AS cliente, empresa.correo, empresa.telefono, empresa.direccion FROM empresa, cliente, vendedor WHERE empresa.cliente = cliente.id_cliente AND empresa.vendedor = vendedor.id_vendedor ORDER BY " . $_GET['parametro'] . ";";
+//$select = "DELETE FROM empresa WHERE id=" . $_GET['parametro'] . ";";
 
-	}else{
-
-$select = "SELECT empresa.id_empresa, empresa.nombre, vendedor.nombre AS vendedor, cliente.nombre AS cliente, empresa.correo, empresa.telefono, empresa.direccion FROM empresa, cliente, vendedor WHERE empresa.cliente = cliente.id_cliente AND empresa.vendedor = vendedor.id_vendedor;";
-}
 
 $result = mysqli_query($con, $select);
 
