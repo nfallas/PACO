@@ -366,23 +366,83 @@ xmlhttp.send();
 		
 	</div>
   </div>
-  <div id="info" style="display:none;">
+    <div id="info" style="display:none;">
 	<div class="form_settings">
 		<form>		
 		<!--<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>#info" >-->
 			<!-- Usuario -->	
-			<h2> Información </h2>
+			<h2> Información Empresa</h2>
 
 		<table>
-			<tr>
-				<td>	<p><br/><h4>Nombre</h4><input type="text" name="nombre" value=":S"/> </p>	</td>
-				<td>	<p><br/><h4>Primer Apellido</h4><input type="text" name="ap1Cliente" value=":S"/>	</p>	</td>
-				<td>	<p><br/><h4>Segundo Apellido</h4><input type="text" name="ap2Cliente" value=":S"/>	</p>	</td>
+			<tr> 
+				<td>  </td>
+				<td>	<p><br/><h4>ID:</h4></p> 	</td>
+				<td>	</td>
+				<td><p><h2><br/> * <br/></h2></p></td>
+				<td>	<p><br/><h4>Empresa:</h4></p>	</td>
+				<td>	</td>
+			</tr>
+			<tr> 
+				<td>  	</td>
+				<td>	<p id="pid">id</p> </td>
+				<td>	</td>
+				<td>	</td>
+				<td>	<p id="pempresa">XXX</p> 	</td>
+				<td>	<p><input type="text" name="empresa" value=""/>	</p>	</td>
 			</tr>
 			<tr>
-				<td>	<p><br/><h4>Cédula</h4><input type="text" name="cedulaCliente" value=":S"/>	</p>	</td>
-				<td>	<p><br/><h4>Dirección de Correo</h4><input type="text" name="emailCliente" value=":S"/>	</p> 	</td>
-				<td>	<p><br/><h4>Teléfono</h4><input type="text" name="telCliente" value=":S"/>	</p>	</td>
+				<td>	</td>
+				<td>	<p><br/><h4>Dueño:</h4></p>	</td> 
+				<td>	</td>
+				<td>	</td>
+				<td>	<p><br/><h4>Vendedor:</h4></p>	</td>
+				<td>	</td>
+			</tr>
+			<tr>
+				<td>	</td>
+				<td>	<p id="pdueno">XXX</p> 	</td>
+				<td>	<p><select id="id" name="name">
+					  <option value="1">Dueño 1</option>
+					  <option value="2">Dueño 2</option>
+					</select>	</p>	</td>
+				<td>	</td>
+				<td>	<p id="pvendedor">XXX</p> 	</td>
+				<td>	<p><select id="id" name="name">
+					  <option value="1">Vendedor 1</option>
+					  <option value="2">Vendedor 2</option>
+					</select>	</p>	</td>
+			</tr>
+			<tr>
+				<td>	</td>
+				<td>	<p><br/><h4>Correo:</h4></p>	</td>
+				<td>	</td>
+				<td>	</td>	
+				<td>	<p ><br/><h4>Teléfono:</h4></p>	</td>
+				<td>	</td>
+			</tr>
+			<tr>
+				<td>	</td>
+				<td>	<p id="pcorreo">XXX</p> 	</td>
+				<td>	<p><input type="text" name="correo" value=""/>	</p>	</td>
+				<td>	</td>
+				<td>	<p id="ptel">XXX</p> 	</td>
+				<td>	<p><input type="text" name="telefono" value=""/>	</p>	</td>
+			</tr>
+			<tr>
+				<td>	</td>
+				<td>	<p><br/><h4>Dirección:</h4></p>	</td>
+				<td>	</td>	
+				<td>	</td>
+				<td>	</td>	
+				<td>	</td>
+			</tr>
+			<tr>
+				<td>	</td>
+				<td>	<p id="pdir">XXX</p> 	</td>
+				<td>	<p><input type="text" name="direccion" value=""/>	</p>	</td>
+				<td>	</td>
+				<td>	</td>	
+				<td>	</td>
 			</tr>
 		</table>
 		<!-- Botones -->
@@ -397,11 +457,8 @@ xmlhttp.send();
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-
-		<a href="#"><input class="submitE3" type="submit" name="name" value="Guardar Cambios" position="absolute"/></a>
-		<a href="#"><input class="submitE2" type="submit" name="name" value="Eliminar" position="absolute"/></a></p>
+		<a href="#"><input class="submitE3" type="submit" name="name" value="Guardar Cambios" position="absolute"/></a></p>
 
 <p id="response"></p>
 		</form>
