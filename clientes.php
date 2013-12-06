@@ -184,6 +184,9 @@ xmlhttp.send();
 <body> 
 
 
+
+
+
 <!-- SUPERPONER INFO -->
 	<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 	    <input type="hidden" name="business" value="gmauwolff@gmail.com">
@@ -210,40 +213,41 @@ xmlhttp.send();
 
       <nav>
 
-	<!-- Menu -->
+<!-- Menu -->
+
         <ul class="sf-menu" id="nav">
 		<li><a href="inicio.html">Inicio</a></li>
-		<li><a href="clientes.php">Clientes</a></li>
+		<li><a href="clientes.html">Clientes</a></li>
 		<li><a href="#">Bodega</a>
 			<ul>
-        		<li><a href="bodega_inventario.php">Inventario</a></li>
-			<li><a href="bodega_mercaderia.php">Mercaderia</a></li>
-			<li><a href="bodega_bodegacr.php">Bodega C.R.</a></li>
+        		<li><a href="bodega_inventario.html">Inventario</a></li>
+			<li><a href="bodega_mercaderia.html">Mercaderia</a></li>
+			<li><a href="bodega_bodegacr.html">Bodega C.R.</a></li>
             		</ul>
           	</li>
 		<li><a href="#">Transporte</a>
 			<ul>
-        		<li><a href="transporte_furgon.php">Furgón</a></li>
-			<li><a href="transporte_cabezal.php">Cabezal</a></li>
-			<li><a href="transporte_conductor.php">Conductor</a></li>
+        		<li><a href="transporte_furgon.html">Furgón</a></li>
+			<li><a href="transporte_cabezal.html">Cabezal</a></li>
+			<li><a href="transporte_conductor.html">Conductor</a></li>
             		</ul>
           	</li>
 		<li><a href="#">Documentación</a>
 			<ul>
-        		<li><a href="factura.php">Factura</a></li>
-			<li><a href="carta_porte.php">Carta Porte</a></li>
-			<li><a href="manif_carga.php">Manifiesto de Carga</a></li>
-              		<li><a href="mov_comercial.php">Movimiento Comercial</a></li>
-              		<li><a href="recibo.php">Recibo</a></li>
+        		<li><a href="factura.html">Factura</a></li>
+			<li><a href="carta_porte.html">Carta Porte</a></li>
+			<li><a href="manif_carga.html">Manifiesto de Carga</a></li>
+              		<li><a href="mov_comercial.html">Movimiento Comercial</a></li>
+              		<li><a href="recibo.html">Recibo</a></li>
             		</ul>
           	</li>
           	<li><a href="#">Mi Cuenta</a>
 			<ul>
-        		<li><a href="micuenta.php">Editar Información</a></li>
+        		<li><a href="micuenta.html">Editar Información</a></li>
 			<li><a href="index.html">Salir</a>
             		</ul></li>
         </ul>
-	<!-- Menu -->
+	<!-- Menu -->	
 
 </nav>
 	</header>
@@ -290,18 +294,14 @@ xmlhttp.send();
 	<footer>
       		<!-- Menu Inferior -->
       		<p><a href="inicio.html">Inicio</a> | 
-			<a href="clientes.php">Clientes</a> | 
-			<a href="bodega_inventario.php">Inventario</a> |
-			<a href="bodega_mercaderia.php">Mercadería</a> | 
-			<a href="bodega_bodegacr.php">Bodega C.R.</a> |  
-			<a href="transporte_furgon.php">Furgón</a> | 
-			<a href="transporte_cabezal.php">Cabezal</a> | 
-			<a href="transporte_conductor.php">Conductor</a> | 
-			<a href="factura.php">Factura</a>| 
-			<a href="carta_porte.php">Carta Porte</a> | 
-			<a href="manif_carga.php">Manifiesto de Carga</a> |			
-			<a href="mov_comercial.php">Movimiento Comercial</a> | 
-			<a href="recibo.php">Recibo</a>
+			<a href="clientes.html">Clientes</a> | 
+			<a href="bodega.html">Bodega</a> | 
+			<a href="transporte.html">Transporte</a> | 
+			<a href="factura.html">Factura</a>| 
+			<a href="carta_porte.html">Carta Porte</a> | 
+			<a href="manif_carga.html">Manifiesto de Carga</a> |			
+			<a href="mov_comercial.html">Movimiento Comercial</a> | 
+			<a href="recibo.html">Recibo</a>
 		</p>
 
 <!-- Informacion Final -->
@@ -314,13 +314,14 @@ xmlhttp.send();
   <!-- SuperPoner Info -->
   <div id="nuevoCliente" style="display:none;">
 	<div class="form_settings">
-		<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>#nuevoCliente" >
+		<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> >
 			<!-- Usuario -->	
 			<h2> Nuevo cliente </h2><p id="rueba">prueba</p>
 		<table>
 			<tr>
-				<td>	<p><br/><h4>Nombre</h4><input id="inputCliente" type="text" name="nombreCliente"/> </p>	</td>
-				<td>	<p><br/><h4>Primer Apellido</h4><input type="text" name="ap1Cliente" value=""/>	</p>	</td>
+				<td>	<p><br/><h4>Nombre</h4><input type="text" id="inputCliente" name="nombreCliente" value="predeterminado"/> </p>	</td>
+
+				<td>	<p><br/><h4>Primer Apellido</h4><input type="text" id="inputAP1 name="ap1Cliente" value=""/>	</p>	</td>
 				<td>	<p><br/><h4>Segundo Apellido</h4><input type="text" name="ap2Cliente" value=""/>	</p>	</td>
 			</tr>
 			<tr>
@@ -442,7 +443,7 @@ xmlhttp.send();
   	</script>
 
 
-<script>
+<script> //JSON, arreglo eliminar
 
 
 var eliminar = new Array();
@@ -521,10 +522,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	else
 		{$identificacion = test_input($_POST["cedulaCliente"]);}
 
-	//echo "<script>
-	//	document.getElementById(\"rueba\").innerHTML=\"caca\";
-	//	document.getElementById(\"inputCliente\").value=\"mafe\";
-//</script>";
+	echo "<script>
+		document.getElementById(\"rueba\").innerHTML=\"caca\";
+		document.getElementById(\"inputCliente\").value=\"mafe\";
+		
+</script>";
+
+//document.getElementById("prueba").value="nelly";
 
 	if($vacio)
 	{	
