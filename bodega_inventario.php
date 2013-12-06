@@ -12,6 +12,96 @@
   <!-- modernizr enables HTML5 elements and feature detects -->
   <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
   <script src="js/facybox.js" type="text/javascript"></script>
+
+<script>
+
+var xmlhttp;
+
+if (window.XMLHttpRequest)
+
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+
+  xmlhttp=new XMLHttpRequest();
+
+  }else{// code for IE6, IE5
+
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+
+  }
+
+xmlhttp.onreadystatechange=function()
+
+  {
+
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+
+    {
+
+    document.getElementById("tablaInventario").innerHTML=xmlhttp.responseText;
+
+    }
+
+  }
+
+xmlhttp.open("GET","selectInventario.php?parametro=n");
+
+xmlhttp.send();
+
+</script>
+
+<script>
+function buscarInventario(tipo)
+{
+	var xmlhttp;
+
+if (window.XMLHttpRequest)
+
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+
+  xmlhttp=new XMLHttpRequest();
+
+  }else{// code for IE6, IE5
+
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+
+  }
+
+xmlhttp.onreadystatechange=function()
+
+  {
+
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+
+    {
+
+    document.getElementById("selectInventario").innerHTML=xmlhttp.responseText;
+
+    }
+
+  }
+
+var elemento = "";
+
+if(tipo == 'id_inventario'){
+	elemento = document.getElementById("buscar_inventario_id").value;
+}else{
+	if(tipo == 'empresa')
+	{	
+		elemento = document.getElementById("buscar_inventario_empresa").value;
+	}else{
+		elemento = document.getElementById("buscar_inventario_fecha").value;
+	}
+}
+
+xmlhttp.open("GET","buscarInventario.php?parametro=" + elemento + "&tipo=" + tipo);
+
+xmlhttp.send();
+}
+
+
+
+</script>
+
 </head>
 
 <body>
@@ -78,23 +168,23 @@
 				<!-- Sub Menu -->
 				<div class="form_settings">
 					<!-- Buscar -->
-					<p><br/><h4>Buscar Bulto por ID</h4><input type="text" name="name" value="digite id"/>	
+					<p><br/><h4>Buscar Inventario por ID</h4><input type="text" id="buscar_inventario_id" name="name" value="digite id"/>	
 						<a href="#" rel="facybox">
-						<input class="submit" type="submit" name="name" value="Buscar"/></a>			
+						<input class="submit" type="submit" name="name" value="Buscar" onClick="buscarInventario('id_inventario')"/></a>			
 					</p>
-					<p><br/><h4>Buscar Bulto por Empresa Cliente</h4><input type="text" name="name" value="digite empresa"/>	
+					<p><br/><h4>Buscar Inventario por Empresa Cliente</h4><input id="buscar_inventario_empresa" type="text" name="name" value="digite empresa"/>	
 						<a href="#" rel="facybox">
-						<input class="submit" type="submit" name="name" value="Buscar"/></a>			
+						<input class="submit" type="submit" name="name" value="Buscar" onClick="buscarInventario('empresa')"/></a>			
 					</p>
-					<p><br/><h4>Buscar Bulto por Fecha</h4><input type="date" name="date" value=""/>	
+					<p><br/><h4>Buscar Inventario por Fecha</h4><input type="date" id="buscar_inventario_fecha" name="date" value=""/>	
 						<a href="#" rel="facybox">
-						<input class="submit" type="submit" name="name" value="Buscar"/></a>
+						<input class="submit" type="submit" name="name" value="Buscar" onClick="buscarInventario('fecha')"/></a>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<!-- Botones --> 
 					  <a href="#nuevoMovInventario" rel="facybox">
-						<input class="submit" type="submit" name="name" value="Nuevo Bulto"/></a>
+						<input class="submit2" type="submit" name="name" value="Nuevo Movimiento"/></a>
 					</p>
 				</div>				
 
@@ -106,42 +196,9 @@
 			  <a href="#">
 				<input class="submit2" type="submit" name="name" value="Deshabilitar Bulto"/></a> -->
 			<!-- Tabla -->
-			<h2>Inventario de Bultos</h2>
+			<h2>Inventario</h2>
 		  	
-		  	<table style="width:100%; border-spacing:0;">
-			    	<tr>
-					<th> </th>
-					<th>ID</th>
-					<th>Fecha Ingreso</th>	
-					<th>Cantidad de Bultos</th>
-					<th>Mercaderia Relacionada</th>
-					<th>Empresa</th>
-				</tr>
-			    	<tr>
-					<td><input class="checkbox" type="checkbox" name="name" value="" /></td>
-					<td>ID</td>
-					<td>aa/mm/dd</td>	
-					<td>mercaderia_cantidadbultos</td>
-					<td>id_mercaderia</td>
-					<td>empresa</td>
-				</tr>
-			    	<tr>
-					<td><input class="checkbox" type="checkbox" name="name" value="" /></td>
-					<td>ID</td>
-					<td>aa/mm/dd</td>	
-					<td>mercaderia_cantidadbultos</td>
-					<td>id_mercaderia</td>
-					<td>empresa</td>
-				</tr>
-			    	<tr>
-					<td><input class="checkbox" type="checkbox" name="name" value="" /></td>
-					<td>ID</td>
-					<td>aa/mm/dd</td>	
-					<td>mercaderia_cantidadbultos</td>
-					<td>id_mercaderia</td>
-					<td>empresa</td>
-				</tr>
-		  	</table>
+		  	<div id="tablaInventario"></div>
 
        		</div><!--sidebar1-->
     	</div>
@@ -175,26 +232,75 @@
   <!-- SuperPoner Info -->
   <div id="nuevoMovInventario" style="display:none;">
 	<div class="form_settings">
+		<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" >
 		<!-- Usuario -->	
 		<h2> Nuevo Movimiento en Inventario </h2>
 		<table>
 			<tr>
 				<td> </td>
 				<td>
-					<p><br/><h4>Fecha de Ingreso</h4><input type="date" name="date" value=""/>	</p>	</td>
+					<p><br/><h4>Fecha de Ingreso</h4><input type="date" id="id_fecha_ingreso" name="date" value=""/>	</p>	</td>
 			</tr>
 			<tr>
 				<td>
 					<p><br/><h4>Mercadería</h4>
-						<select id="id" name="name">
-							<option value="1">M 1</option>
-							<option value="2">M 2</option>
+						<select id="id_mercaderia" name="mercaderia">
+<?php //script de select mercaderia
+
+ini_set ('error_reporting', E_ALL);
+
+$con = mysqli_connect('localhost','root','steph1','prueba');
+if (!$con)
+  {
+  die('Could not connect: ' . mysqli_error($con));
+  }
+
+$select = "SELECT id_mercaderia FROM mercaderia";
+
+$result = mysqli_query($con, $select);
+
+$contador = 1;
+
+while($row = mysqli_fetch_array($result))
+  {
+  
+  echo "<option value=\"" . $contador . "\">" . $row[id_mercaderia] . "</option>";
+  $contador = $contador + 1;
+  }
+
+mysqli_close($con);
+ //fin de select mercaderia 
+?>
 						</select></p>	</td>
 				<td>
 					<p><br/><h4>Empresa</h4>
-						<select id="id" name="name">
-							<option value="1">E 1</option>
-							<option value="2">E 2</option>
+						<select id="id" name="empresa">
+<?php //script de select empresa
+
+ini_set ('error_reporting', E_ALL);
+
+$con = mysqli_connect('localhost','root','steph1','prueba');
+if (!$con)
+  {
+  die('Could not connect: ' . mysqli_error($con));
+  }
+
+$select = "SELECT nombre FROM empresa";
+
+$result = mysqli_query($con, $select);
+
+$contador = 1;
+
+while($row = mysqli_fetch_array($result))
+  {
+  
+  echo "<option value=\"" . $contador . "\">" . $row[nombre] . "</option>";
+  $contador = $contador + 1;
+  }
+
+mysqli_close($con);
+ //fin de select empresa 
+?>
 						</select></p>	</td>
 			</tr>
 			<tr>
@@ -206,7 +312,7 @@
 
 
 		</table>
-		
+		</form>
 	</div>
   </div>
   <!-- SuperPoner Info -->				
@@ -244,5 +350,18 @@
       		}).trigger("click");
       		});
   	</script>
+
+<?php
+//validacion de insert e insert
+if ($_SERVER["REQUEST_METHOD"] == "POST")
+{
+	echo '<script> 
+	alert("Ingresado los siguientes datos:\n-Fecha: '. $_POST["date"] .'\n-Bulto: '. $_POST["mercaderia"] .'\n-Empresa: '. $_POST["empresa"].'"); 
+</script>';
+}
+
+//validacion
+?>
+
 </body>
 </html>
