@@ -210,7 +210,7 @@ xmlhttp.send();
 
       <nav>
 
-	<!-- Menu -->
+<!-- Menu -->
         <ul class="sf-menu" id="nav">
 		<li><a href="inicio.html">Inicio</a></li>
 		<li><a href="clientes.php">Clientes</a></li>
@@ -243,7 +243,7 @@ xmlhttp.send();
 			<li><a href="index.html">Salir</a>
             		</ul></li>
         </ul>
-	<!-- Menu -->
+	<!-- Menu -->	
 
 </nav>
 	</header>
