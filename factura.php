@@ -7,8 +7,6 @@
   <meta name="keywords" content="website keywords, website keywords" />
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <link rel="stylesheet" type="text/css" href="css/style.css" />
-  <link href="css/facybox.css" media="screen" rel="stylesheet" type="text/css" />
-  <link href="css/facybox_urls.css" media="screen" rel="stylesheet" type="text/css" />
   <!-- modernizr enables HTML5 elements and feature detects -->
   <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
 </head>
@@ -27,6 +25,7 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="index.html">Castro Fallas</a></p></h1>
         </div>
+
 
       <nav>
 	<!-- Menu -->
@@ -64,31 +63,20 @@
         </ul>
 	<!-- Menu -->
 	</nav>
-
 	</header>
 	
-	<div id="site_content1">
-
-		<div id="content">   
-			<div id="content_item">
-          			<h2>Nombre del Usuario Actual :)</h2>
-        		</div>
+	<div id="site_content">
+	
+      		<div id="sidebar_container">
+			
+        		<!--<div class="sidebar">
+          		</div>-->
+			
       		</div>
-
-		<!-- Galeria de imagenes -->
-		<ul id="images">
-	        <li><img src="images/1.png" width="600" height="300" alt="gallery_buildings_one" /></li>
-	        <li><img src="images/2.png" width="600" height="300" alt="gallery_buildings_two" /></li>
-	        <li><img src="images/3.png" width="600" height="300" alt="gallery_buildings_three" /></li>
-	        <li><img src="images/4.png" width="600" height="300" alt="gallery_buildings_four" /></li>
-	        <li><img src="images/5.png" width="600" height="300" alt="gallery_buildings_five" /></li>
-	        <li><img src="images/6.png" width="600" height="300" alt="gallery_buildings_six" /></li>
-	        </ul>
-		<!-- Galeria de imagenes -->
     	</div>
 
 	<footer>
-		<!-- Menu Inferior -->
+      		<!-- Menu Inferior -->
       		<p><a href="inicio.html">Inicio</a> | 
 			<a href="clientes.php">Clientes</a> | 
 			<a href="bodega_inventario.php">Inventario</a> |

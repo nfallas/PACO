@@ -11,6 +11,7 @@
   <link href="css/facybox_urls.css" media="screen" rel="stylesheet" type="text/css" />
   <!-- modernizr enables HTML5 elements and feature detects -->
   <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
+  <script src="js/facybox.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -27,6 +28,7 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="index.html">Castro Fallas</a></p></h1>
         </div>
+
 
       <nav>
 	<!-- Menu -->
@@ -63,32 +65,89 @@
             		</ul></li>
         </ul>
 	<!-- Menu -->
-	</nav>
 
+	
+	
+
+	</nav>
 	</header>
 	
 	<div id="site_content1">
+       		<div class="sidebar1">
+			<div class="sidebar1">
+				<!-- Sub Menu -->
+				<div class="form_settings">
+					<!-- Buscar -->
+					<p><br/><h4>Buscar Bulto por ID</h4><input type="text" name="name" value="digite id"/>	
+						<a href="#" rel="facybox">
+						<input class="submit" type="submit" name="name" value="Buscar"/></a>			
+					</p>
+					<p><br/><h4>Buscar Bulto por Empresa Cliente</h4><input type="text" name="name" value="digite empresa"/>	
+						<a href="#" rel="facybox">
+						<input class="submit" type="submit" name="name" value="Buscar"/></a>			
+					</p>
+					<p><br/><h4>Buscar Bulto por Fecha</h4><input type="date" name="date" value=""/>	
+						<a href="#" rel="facybox">
+						<input class="submit" type="submit" name="name" value="Buscar"/></a>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<!-- Botones --> 
+					  <a href="#nuevoMovInventario" rel="facybox">
+						<input class="submit" type="submit" name="name" value="Nuevo Bulto"/></a>
+					</p>
+				</div>				
 
-		<div id="content">   
-			<div id="content_item">
-          			<h2>Nombre del Usuario Actual :)</h2>
-        		</div>
-      		</div>
+			</div>
+			<!-- Sub Menu -->
+			<!-- Editar y Deshabilitar 
+			<a href="#">
+				<input class="submit" type="submit" name="name" value="Editar Bulto"/></a>
+			  <a href="#">
+				<input class="submit2" type="submit" name="name" value="Deshabilitar Bulto"/></a> -->
+			<!-- Tabla -->
+			<h2>Inventario de Bultos</h2>
+		  	
+		  	<table style="width:100%; border-spacing:0;">
+			    	<tr>
+					<th> </th>
+					<th>ID</th>
+					<th>Fecha Ingreso</th>	
+					<th>Cantidad de Bultos</th>
+					<th>Mercaderia Relacionada</th>
+					<th>Empresa</th>
+				</tr>
+			    	<tr>
+					<td><input class="checkbox" type="checkbox" name="name" value="" /></td>
+					<td>ID</td>
+					<td>aa/mm/dd</td>	
+					<td>mercaderia_cantidadbultos</td>
+					<td>id_mercaderia</td>
+					<td>empresa</td>
+				</tr>
+			    	<tr>
+					<td><input class="checkbox" type="checkbox" name="name" value="" /></td>
+					<td>ID</td>
+					<td>aa/mm/dd</td>	
+					<td>mercaderia_cantidadbultos</td>
+					<td>id_mercaderia</td>
+					<td>empresa</td>
+				</tr>
+			    	<tr>
+					<td><input class="checkbox" type="checkbox" name="name" value="" /></td>
+					<td>ID</td>
+					<td>aa/mm/dd</td>	
+					<td>mercaderia_cantidadbultos</td>
+					<td>id_mercaderia</td>
+					<td>empresa</td>
+				</tr>
+		  	</table>
 
-		<!-- Galeria de imagenes -->
-		<ul id="images">
-	        <li><img src="images/1.png" width="600" height="300" alt="gallery_buildings_one" /></li>
-	        <li><img src="images/2.png" width="600" height="300" alt="gallery_buildings_two" /></li>
-	        <li><img src="images/3.png" width="600" height="300" alt="gallery_buildings_three" /></li>
-	        <li><img src="images/4.png" width="600" height="300" alt="gallery_buildings_four" /></li>
-	        <li><img src="images/5.png" width="600" height="300" alt="gallery_buildings_five" /></li>
-	        <li><img src="images/6.png" width="600" height="300" alt="gallery_buildings_six" /></li>
-	        </ul>
-		<!-- Galeria de imagenes -->
+       		</div><!--sidebar1-->
     	</div>
 
 	<footer>
-		<!-- Menu Inferior -->
+      		<!-- Menu Inferior -->
       		<p><a href="inicio.html">Inicio</a> | 
 			<a href="clientes.php">Clientes</a> | 
 			<a href="bodega_inventario.php">Inventario</a> |
@@ -104,6 +163,7 @@
 			<a href="recibo.php">Recibo</a>
 		</p>
 			
+			
 
 		<!-- Informacion Final -->
       		<p>Copyright &copy; Ulatina | Practica Empresarial Supervisada</p>
@@ -111,7 +171,45 @@
     		<p>&nbsp;</p>
     		<p>&nbsp;</p>
   </div>
-  
+
+  <!-- SuperPoner Info -->
+  <div id="nuevoMovInventario" style="display:none;">
+	<div class="form_settings">
+		<!-- Usuario -->	
+		<h2> Nuevo Movimiento en Inventario </h2>
+		<table>
+			<tr>
+				<td> </td>
+				<td>
+					<p><br/><h4>Fecha de Ingreso</h4><input type="date" name="date" value=""/>	</p>	</td>
+			</tr>
+			<tr>
+				<td>
+					<p><br/><h4>Mercadería</h4>
+						<select id="id" name="name">
+							<option value="1">M 1</option>
+							<option value="2">M 2</option>
+						</select></p>	</td>
+				<td>
+					<p><br/><h4>Empresa</h4>
+						<select id="id" name="name">
+							<option value="1">E 1</option>
+							<option value="2">E 2</option>
+						</select></p>	</td>
+			</tr>
+			<tr>
+				<td>	</td>
+				<td>	
+				<a href="#"><input class="submit" type="submit" name="name" value="Insertar" position="absolute"/></a>	
+				</td> 
+			</tr>
+
+
+		</table>
+		
+	</div>
+  </div>
+  <!-- SuperPoner Info -->				
 
 	<!-- javascript at the bottom for fast page loading -->
 	<script type="text/javascript" src="js/jquery.js"></script>
@@ -123,7 +221,7 @@
       		$('ul.sf-menu').sooperfish();
     		});
   	</script>
-
+	<script src="js/facybox.js" type="text/javascript"></script>
 	<script type="text/javascript" src="js/jquery.kwicks-1.5.1.js"></script>
   	<script type="text/javascript">
     		$(document).ready(function() {
@@ -133,6 +231,18 @@
       		});
       		$('ul.sf-menu').sooperfish();
     		});
+  	</script>
+	<!-- SuperPoner Info -->
+  	<script type="text/javascript">
+    		jQuery(document).ready(function($) {
+      		$('a[rel*=facybox]').facybox({
+        	// noAutoload: true
+      		});
+      
+      		$("h2",$("#changelog")).css("cursor","pointer").click(function(){
+          	$(this).next().slideToggle('fast');
+      		}).trigger("click");
+      		});
   	</script>
 </body>
 </html>
