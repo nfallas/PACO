@@ -255,7 +255,7 @@ xmlhttp.send();
 				<!-- Sub Menu -->
 				<div class="form_settings">
 					<!-- Buscar -->
-					<p><br/><h4>Buscar Empresas por Cliente</h4><input id="buscarCliente" type="text" name="name" value="digite cliente"/>	
+					<p><br/><h4>Buscar Empresas por Dueño</h4><input id="buscarCliente" type="text" name="name" value="digite dueño"/>	
 						
 					<input class="submit" type="submit" name="name" value="Buscar" onclick="buscarCliente('cliente')"/>			
 					</p>
@@ -280,7 +280,9 @@ xmlhttp.send();
 			<div id="selectEmpresa">
 			</div>
 			<p>
-				<input class="submitE" type="submit" name="name" value="Eliminar" onclick="eliminar()"/></p
+				<input class="submitE" type="submit" name="name" value="Eliminar" onclick="eliminar()"/>
+				<input class="submitE" type="submit" name="name" value="Refrescar" onclick="refresh()"/></p>
+			
 
 
        		</div><!--sidebar1-->
