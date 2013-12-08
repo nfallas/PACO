@@ -50,6 +50,41 @@ xmlhttp.send();
 </script>
 
 <script>
+function ordenarTabla(orden)
+{
+	var xmlhttp;
+
+if (window.XMLHttpRequest)
+
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+
+  xmlhttp=new XMLHttpRequest();
+
+  }else{// code for IE6, IE5
+
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+
+  }
+
+xmlhttp.onreadystatechange=function()
+
+  {
+
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+
+    {
+
+    document.getElementById("tablaInventario").innerHTML=xmlhttp.responseText;
+
+    }
+
+  }
+
+xmlhttp.open("GET","selectInventario.php?parametro=" + orden);
+
+xmlhttp.send();
+}
+
 function buscarInventario(tipo)
 {
 	var xmlhttp;
@@ -74,7 +109,7 @@ xmlhttp.onreadystatechange=function()
 
     {
 
-    document.getElementById("selectInventario").innerHTML=xmlhttp.responseText;
+    document.getElementById("tablaInventario").innerHTML=xmlhttp.responseText;
 
     }
 
@@ -98,7 +133,54 @@ xmlhttp.open("GET","buscarInventario.php?parametro=" + elemento + "&tipo=" + tip
 xmlhttp.send();
 }
 
+function agregarDel(id)
+{
+	if(document.getElementById(id).checked)
+	{
+		eliminar.push(document.getElementById(id).name);
+	}else{
+		var aux = eliminar.indexOf(id);
+		eliminar.splice(id);
+	}
+eliminar.push(document.getElementById(id).name);
+}
 
+function eliminar()
+{
+	for (var i=0;i<eliminar.length;i++){ //empieza for
+		var xmlhttp;
+
+if (window.XMLHttpRequest)
+
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+
+  xmlhttp=new XMLHttpRequest();
+
+  }else{// code for IE6, IE5
+
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+
+  }
+
+xmlhttp.onreadystatechange=function()
+
+  {
+
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+
+    {
+
+    document.getElementById("selectEmpresa").innerHTML=xmlhttp.responseText;
+
+    }
+
+  }
+
+xmlhttp.open("GET","eliminarEmpresa.php?parametro=" + eliminar[i]);
+
+xmlhttp.send();
+	} //termina for
+}
 
 </script>
 
@@ -169,16 +251,16 @@ xmlhttp.send();
 				<div class="form_settings">
 					<!-- Buscar -->
 					<p><br/><h4>Buscar Inventario por ID</h4><input type="text" id="buscar_inventario_id" name="name" value="digite id"/>	
-						<a href="#" rel="facybox">
-						<input class="submit" type="submit" name="name" value="Buscar" onClick="buscarInventario('id_inventario')"/></a>			
+						
+						<input class="submit" type="submit" name="name" value="Buscar" onClick="buscarInventario('id_inventario')"/>		
 					</p>
 					<p><br/><h4>Buscar Inventario por Empresa Cliente</h4><input id="buscar_inventario_empresa" type="text" name="name" value="digite empresa"/>	
-						<a href="#" rel="facybox">
-						<input class="submit" type="submit" name="name" value="Buscar" onClick="buscarInventario('empresa')"/></a>			
+						
+						<input class="submit" type="submit" name="name" value="Buscar" onClick="buscarInventario('empresa')"/>			
 					</p>
 					<p><br/><h4>Buscar Inventario por Fecha</h4><input type="date" id="buscar_inventario_fecha" name="date" value=""/>	
-						<a href="#" rel="facybox">
-						<input class="submit" type="submit" name="name" value="Buscar" onClick="buscarInventario('fecha')"/></a>
+						
+						<input class="submit" type="submit" name="name" value="Buscar" onClick="buscarInventario('fecha')"/>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -199,6 +281,10 @@ xmlhttp.send();
 			<h2>Inventario</h2>
 		  	
 		  	<div id="tablaInventario"></div>
+
+				<p>
+				<input class="submitE" type="submit" name="name" value="Eliminar" onclick="eliminar()"/>
+				<input class="submitE" type="submit" name="name" value="Refrescar" onclick="ordenarTabla('n')"/></p>
 
        		</div><!--sidebar1-->
     	</div>
@@ -351,6 +437,10 @@ mysqli_close($con);
       		});
   	</script>
 
+<script>
+var eliminar = new Array();
+</script>
+
 <?php
 //validacion de insert e insert
 if ($_SERVER["REQUEST_METHOD"] == "POST")
@@ -358,6 +448,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	echo '<script> 
 	alert("Ingresado los siguientes datos:\n-Fecha: '. $_POST["date"] .'\n-Bulto: '. $_POST["mercaderia"] .'\n-Empresa: '. $_POST["empresa"].'"); 
 </script>';
+
+/**
+
+para insertar llamamos al procedimiento movimiento
+
+**/
+
 }
 
 //validacion
