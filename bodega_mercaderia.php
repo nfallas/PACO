@@ -12,6 +12,44 @@
   <!-- modernizr enables HTML5 elements and feature detects -->
   <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
   <script src="js/facybox.js" type="text/javascript"></script>
+
+<script>
+
+var xmlhttp;
+
+if (window.XMLHttpRequest)
+
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+
+  xmlhttp=new XMLHttpRequest();
+
+  }else{// code for IE6, IE5
+
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+
+  }
+
+xmlhttp.onreadystatechange=function()
+
+  {
+
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+
+    {
+
+    document.getElementById("tablaMercaderia").innerHTML=xmlhttp.responseText;
+
+    }
+
+  }
+
+xmlhttp.open("GET","selectMercaderia.php?parametro=n");
+
+xmlhttp.send();
+
+</script>
+
+
 </head>
 
 <body>
@@ -104,40 +142,8 @@
 			<!-- Tabla -->
 			<h2>Listado de Mercadería</h2>
 		  	
-		  	<table style="width:100%; border-spacing:0;">
-			    	<tr>
-					<th> </th>
-					<th>ID</th>
-					<th>Cantidad de Bultos</th>	
-					<th>Peso</th>
-					<th>Descripción</th>
-					<th>Movimiento Comercial</th>
-				</tr>
-			    	<tr>
-					<td><input class="checkbox" type="checkbox" name="name" value="" /></td>
-					<td>ID</td>
-					<td>Cantidad de Bultos</td>	
-					<td>Peso</td>
-					<td>Descripción</td>
-					<td>Movimiento Comercial</td>
-				</tr>
-			    	<tr>
-					<td><input class="checkbox" type="checkbox" name="name" value="" /></td>
-					<td>ID</td>
-					<td>Cantidad de Bultos</td>	
-					<td>Peso</td>
-					<td>Descripción</td>
-					<td>Movimiento Comercial</td>
-				</tr>
-			    	<tr>
-					<td><input class="checkbox" type="checkbox" name="name" value="" /></td>
-					<td>ID</td>
-					<td>Cantidad de Bultos</td>	
-					<td>Peso</td>
-					<td>Descripción</td>
-					<td>Movimiento Comercial</td>
-				</tr>
-		  	</table>
+			<div id="tablaMercaderia"></div>		  	
+
        		</div><!--sidebar1-->
     	</div>
 
