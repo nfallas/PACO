@@ -49,6 +49,136 @@ xmlhttp.send();
 
 </script>
 
+<script>
+
+function ordenarTabla(orden)
+{
+	var xmlhttp;
+
+if (window.XMLHttpRequest)
+
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+
+  xmlhttp=new XMLHttpRequest();
+
+  }else{// code for IE6, IE5
+
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+
+  }
+
+xmlhttp.onreadystatechange=function()
+
+  {
+
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+
+    {
+
+    document.getElementById("tablaMercaderia").innerHTML=xmlhttp.responseText;
+
+    }
+
+  }
+
+xmlhttp.open("GET","selectMercaderia.php?parametro=" + orden);
+
+xmlhttp.send();
+}
+
+function buscar(tipo)
+{
+	var xmlhttp;
+
+if (window.XMLHttpRequest)
+
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+
+  xmlhttp=new XMLHttpRequest();
+
+  }else{// code for IE6, IE5
+
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+
+  }
+
+xmlhttp.onreadystatechange=function()
+
+  {
+
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+
+    {
+
+    document.getElementById("tablaMercaderia").innerHTML=xmlhttp.responseText;
+
+    }
+
+  }
+
+var elemento = "";
+
+if(tipo == 'id_mercaderia'){
+	elemento = document.getElementById("buscarId").value;
+}else{
+	elemento = document.getElementById("buscarMC").value;
+}
+
+alert(elemento);
+xmlhttp.open("GET","buscarMercaderia.php?parametro=" + elemento + "&tipo=" + tipo);
+
+xmlhttp.send();
+}
+
+function agregarDel(id)
+{
+	if(document.getElementById(id).checked)
+	{
+		eliminar.push(document.getElementById(id).name);
+	}else{
+		var aux = eliminar.indexOf(id);
+		eliminar.splice(id);
+	}
+eliminar.push(document.getElementById(id).name);
+}
+
+function eliminar()
+{
+	for (var i=0;i<eliminar.length;i++){ //empieza for
+		var xmlhttp;
+
+if (window.XMLHttpRequest)
+
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+
+  xmlhttp=new XMLHttpRequest();
+
+  }else{// code for IE6, IE5
+
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+
+  }
+
+xmlhttp.onreadystatechange=function()
+
+  {
+
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+
+    {
+
+    document.getElementById("tablaMercaderia").innerHTML=xmlhttp.responseText;
+
+    }
+
+  }
+
+xmlhttp.open("GET","eliminarEmpresa.php?parametro=" + eliminar[i]);
+
+xmlhttp.send();
+	} //termina for
+}
+</script>
 
 </head>
 
@@ -116,13 +246,13 @@ xmlhttp.send();
 				<!-- Sub Menu -->
 				<div class="form_settings">
 					<!-- Buscar -->
-					<p><br/><h4>Buscar Mercaderia por ID</h4><input type="text" name="name" value="digite id"/>	
-						<a href="#" rel="facybox">
-						<input class="submit" type="submit" name="name" value="Buscar"/></a>			
+					<p><br/><h4>Buscar Mercaderia por ID</h4><input type="text" id="buscarId" name="name" value="digite id"/>	
+						
+						<input class="submit" type="submit" name="name" value="Buscar" onClick="buscar('id_mercaderia')"/>			
 					</p>
-					<p><br/><h4>Buscar Mercaderia por Movimiento Comercial</h4><input type="text" name="name" value="digite numero de movimiento"/>	
-						<a href="#" rel="facybox">
-						<input class="submit" type="submit" name="name" value="Buscar"/></a>
+					<p><br/><h4>Buscar Mercaderia por Movimiento Comercial</h4><input type="text" id="buscarMC" name="name" value="digite numero de movimiento"/>	
+						
+						<input class="submit" type="submit" name="name" value="Buscar" onClick="buscar('movimiento_comercial')"/>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -143,6 +273,10 @@ xmlhttp.send();
 			<h2>Listado de Mercadería</h2>
 		  	
 			<div id="tablaMercaderia"></div>		  	
+	
+			<p>
+				<input class="submitE" type="submit" name="name" value="Eliminar" onclick="eliminar()"/>
+				<input class="submitE" type="submit" name="name" value="Refrescar" onclick="ordenarTabla('n')"/></p>
 
        		</div><!--sidebar1-->
     	</div>
@@ -176,26 +310,25 @@ xmlhttp.send();
   <!-- SuperPoner Info -->
   <div id="nuevaMercaderia" style="display:none;">
 	<div class="form_settings">
+	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>#nuevaMercaderia" >
 		<!-- Usuario -->	
 		<h2> Nueva Mercadería </h2>
-	
-		<p><br/><h4>Cantidad de Bultos</h4><input type="text" name="name" value=""/>	</p>
-		<p><br/><h4>Peso</h4><input type="text" name="name" value=""/>	</p>
-		<p><br/><h4>Descripción</h4><input type="text" name="name" value=""/>	</p>
-		<p><br/><h4>Movimiento Comercial</h4>
-			<select id="id" name="name">
-				<option value="1">MC 1</option>
-				<option value="2">MC 2</option>
-			</select></p>
-		<p><br/><h4>Clase</h4><input type="text" name="name" value=""/>	</p>
-		<p><br/><h4>Cantidad</h4><input type="text" name="name" value=""/>	</p>
-		<p><br/><h4>Precio Unidad</h4><input type="text" name="name" value=""/>	</p>
-		<p><br/><h4>Total</h4><input type="text" name="name" value=""/>	</p>
-		<p><br/><h4>Arancel</h4><input type="text" name="name" value=""/>	</p>
+		<table>
+			<p><tr><h4>Cantidad de Bultos</h4><input type="text" id="inputBultos" name="inputBultos" value=""/></p>
+			<p><tr><h4>Peso</h4><input type="text" id="inputPeso" name="inputPeso" value="" /></p>
+			<p><tr><h4>Descripción</h4><input type="text" id="inputDescripcion" name="inputDescripcion" value="" /></p>
+			<p><tr><h4>Movimiento Comercial</h4><select id="selectMC" name="selectMC">
+								<option value="1">MC 1</option>
+							</select></p>
+			<p><tr><h4>Clase</h4><input type="text" id="inputClase" name="inputClase" value=""/></p>
+			<p><tr><h4>Cantidad</h4><input type="text" id="inputCantidad" name="inputCantidad" value=""/></p>
+			<p><tr><h4>Precio Unidad</h4><input type="text" id="inputPrecioUnidad" name="inputPrecioUnidad" value="" /></p>
+			<p><tr><h4>Total</h4><input type="text" id="inputTotal" name="inputTotal" value="" /></p>
+			<p><tr><h4>Arancel</h4><input type="text" id="inputArancel" name="inputArancel" value="" /></p>
 		
 
 		<a href="#"><input class="submit" type="submit" name="name" value="Insertar" position="absolute"/></a>
-		
+	</form>
 	</div>
   </div>
   <!-- SuperPoner Info -->				
@@ -233,5 +366,151 @@ xmlhttp.send();
       		}).trigger("click");
       		});
   	</script>
+
+<script>
+
+
+var eliminar = new Array();
+ 
+
+
+</script>
+
+<?php
+//validacion
+if ($_SERVER["REQUEST_METHOD"] == "POST")
+{
+	
+	$vacio = false;
+	$mensaje = 'Es necesario que llene los siguientes espacios:';
+
+	//echo "<SCRIPT language=\"JavaScript\"> 
+	//	alert(\"caca\");
+	// 	</script>";
+
+	$cantidad_bultos = $peso = $descripcion = $clase = $cantidad = $precio_unidad = $total = $arancel = $movimiento_comercial = "";
+
+
+/* ids
+inputBultos
+inputPeso
+inputDescripcion
+selectMC
+inputClase
+inputCantidad
+inputPrecioUnidad
+inputTotal
+inputArancel
+*/
+
+
+	if (empty($_POST["inputBultos"]))
+		{
+
+		$vacio = true;
+		$mensaje .= '\n-Bultos';
+
+		}
+	else
+		{
+		$cantidad_bultos = test_input($_POST["inputBultos"]);
+		}
+
+	if (empty($_POST["inputPeso"]))
+		{
+		
+		$vacio = true;
+		$mensaje .= '\n-Peso';
+
+		}
+	else
+		{$peso = test_input($_POST["inputPeso"]);}
+
+	if (empty($_POST["inputDescripcion"]))
+		{
+			$descripcion = "";
+		}
+	else
+		{$descripcion = test_input($_POST["inputDescripcion"]);}
+
+	if (empty($_POST["selectMC"]))
+		{
+		
+		}
+
+	if (empty($_POST["inputClase"]))
+		{
+			$vacio = true;
+			$mensaje .= '\n-Clase';
+		}
+	else
+		{$clase = test_input($_POST["inputClase"]);}
+
+	if (empty($_POST["inputCantidad"]))
+		{
+
+		$vacio = true;
+		$mensaje .= '\n-Cantidad';
+
+		}
+	else
+		{$cantidad = test_input($_POST["inputCantidad"]);}
+
+	if (empty($_POST["inputPrecioUnidad"]))
+		{
+
+		$vacio = true;
+		$mensaje .= '\n-Precio por Unidad';
+
+		}
+	else
+		{$precio_unidad = test_input($_POST["inputPrecioUnidad"]);}
+
+	if (empty($_POST["inputTotal"]))
+		{
+
+		$vacio = true;
+		$mensaje .= '\n-Total';
+
+		}
+	else
+		{$total = test_input($_POST["inputTotal"]);}
+
+	if (empty($_POST["inputArancel"]))
+		{
+
+		$vacio = true;
+		$mensaje .= '\n-Arancel';
+
+		}
+	else
+		{$arancel = test_input($_POST["inputArancel"]);}
+
+	//echo "<script>
+	//	document.getElementById(\"rueba\").innerHTML=\"caca\";
+	//	document.getElementById(\"inputCliente\").value=\"mafe\";
+//</script>";
+
+	if($vacio)
+	{	
+		echo '<SCRIPT language="JavaScript"> 
+		alert("'.$mensaje.'");
+		jQuery.facybox({ div: \'#nuevaMercaderia\' });
+	 	</script>';
+		$vacio = false;
+	}
+	
+}
+
+function test_input($data)
+{
+     $data = trim($data);
+     $data = stripslashes($data);
+     $data = htmlspecialchars($data);
+     return $data;
+}
+
+//validacion
+?>
 </body>
 </html>
