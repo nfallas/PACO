@@ -12,6 +12,173 @@
   <!-- modernizr enables HTML5 elements and feature detects -->
   <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
   <script src="js/facybox.js" type="text/javascript"></script>
+
+<script>
+
+var xmlhttp;
+
+if (window.XMLHttpRequest)
+
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+
+  xmlhttp=new XMLHttpRequest();
+
+  }else{// code for IE6, IE5
+
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+
+  }
+
+xmlhttp.onreadystatechange=function()
+
+  {
+
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+
+    {
+
+    document.getElementById("tablaBodega").innerHTML=xmlhttp.responseText;
+
+    }
+
+  }
+
+xmlhttp.open("GET","selectBodega.php?parametro=n");
+
+xmlhttp.send();
+
+</script>
+
+<script>
+
+function ordenarTabla(orden)
+{
+	var xmlhttp;
+
+if (window.XMLHttpRequest)
+
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+
+  xmlhttp=new XMLHttpRequest();
+
+  }else{// code for IE6, IE5
+
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+
+  }
+
+xmlhttp.onreadystatechange=function()
+
+  {
+
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+
+    {
+
+    document.getElementById("tablaBodega").innerHTML=xmlhttp.responseText;
+
+    }
+
+  }
+
+xmlhttp.open("GET","selectBodega.php?parametro=" + orden);
+
+xmlhttp.send();
+}
+
+function buscar(tipo)
+{
+	var xmlhttp;
+
+if (window.XMLHttpRequest)
+
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+
+  xmlhttp=new XMLHttpRequest();
+
+  }else{// code for IE6, IE5
+
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+
+  }
+
+xmlhttp.onreadystatechange=function()
+
+  {
+
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+
+    {
+
+    document.getElementById("tablaBodega").innerHTML=xmlhttp.responseText;
+
+    }
+
+  }
+
+var elemento = "";
+
+if(tipo == 'id_bodegaCR'){
+	elemento = document.getElementById("buscarId").value;
+}else{
+	elemento = document.getElementById("buscarVendedor").value;
+}
+
+xmlhttp.open("GET","buscarBodega.php?parametro=" + elemento + "&tipo=" + tipo);
+
+xmlhttp.send();
+}
+
+function agregarDel(id)
+{
+	if(document.getElementById(id).checked)
+	{
+		eliminar.push(document.getElementById(id).name);
+	}else{
+		var aux = eliminar.indexOf(id);
+		eliminar.splice(id);
+	}
+eliminar.push(document.getElementById(id).name);
+}
+
+function eliminar()
+{
+	for (var i=0;i<eliminar.length;i++){ //empieza for
+		var xmlhttp;
+
+if (window.XMLHttpRequest)
+
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+
+  xmlhttp=new XMLHttpRequest();
+
+  }else{// code for IE6, IE5
+
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+
+  }
+
+xmlhttp.onreadystatechange=function()
+
+  {
+
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+
+    {
+
+    document.getElementById("tablaBodega").innerHTML=xmlhttp.responseText;
+
+    }
+
+  }
+
+xmlhttp.open("GET","eliminarBodega.php?parametro=" + eliminar[i]);
+
+xmlhttp.send();
+	} //termina for
+}
+</script>
+
 </head>
 
 <body>
@@ -75,13 +242,13 @@
 				<!-- Sub Menu -->
 				<div class="form_settings">
 					<!-- Buscar -->
-					<p><br/><h4>Buscar Mercaderia  por ID</h4><input type="text" name="name" value="digite id"/>	
-						<a href="#" rel="facybox">
-						<input class="submit" type="submit" name="name" value="Buscar"/></a>			
+					<p><br/><h4>Buscar Mercaderia  por ID</h4><input type="text" id="buscarId" name="name" value="digite id"/>	
+						
+						<input class="submit" type="submit" name="name" value="Buscar" onClick="buscar('id_bodegaCR')"/>			
 					</p>
-					<p><br/><h4>Buscar Mercaderia por Inventario</h4><input type="text" name="name" value="digite Movimiento de Inventario"/>	
-						<a href="#" rel="facybox">
-						<input class="submit" type="submit" name="name" value="Buscar"/></a>
+					<p><br/><h4>Buscar Mercaderia por Inventario</h4><input type="text" id="buscarInventario" name="name" value="digite Movimiento de Inventario"/>	
+						
+						<input class="submit" type="submit" name="name" value="Buscar" onClick="buscar('')"/>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -101,51 +268,7 @@
 			<!-- Tabla -->
 			<h2>Bodega C.R.</h2>
 		  	
-		  	<table style="width:100%; border-spacing:0;">
-			    	<tr><th> </th>	
-					<th>ID</th>
-					<th>Bodega</th>	
-					<th>Identificador</th>
-					<th>Rack</th>
-					<th>Nivel</th>
-					<th>Pista</th>
-					<th>Carta Porte</th>
-					<th>Inventario</th>
-				</tr>
-			    	<tr>
-					<td><input class="checkbox" type="checkbox" name="name" value="" /></td>
-					<td>ID</td>
-					<td>bodega</td>	
-					<td>identificador</td>
-					<td>#rack</td>
-					<td>#nivel</td>
-					<td>#pista</td>
-					<td>id_cartaporte</td>
-					<td>id_inventario</td>
-				</tr>
-			    	<tr>
-					<td><input class="checkbox" type="checkbox" name="name" value="" /></td>
-					<td>ID</td>
-					<td>bodega</td>	
-					<td>identificador</td>
-					<td>#rack</td>
-					<td>#nivel</td>
-					<td>#pista</td>
-					<td>id_cartaporte</td>
-					<td>id_inventario</td>
-				</tr>
-			    	<tr>
-					<td><input class="checkbox" type="checkbox" name="name" value="" /></td>	
-					<td>ID</td>
-					<td>bodega</td>	
-					<td>identificador</td>
-					<td>#rack</td>
-					<td>#nivel</td>
-					<td>#pista</td>
-					<td>id_cartaporte</td>
-					<td>id_inventario</td>
-				</tr>
-		  	</table>
+		  	<div id="tablaBodega"></div>
 
        		</div><!--sidebar1-->
     	</div>
@@ -240,5 +363,15 @@
       		}).trigger("click");
       		});
   	</script>
+
+<script>
+
+
+var eliminar = new Array();
+ 
+
+
+</script>
+
 </body>
 </html>

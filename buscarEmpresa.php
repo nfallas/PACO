@@ -20,10 +20,11 @@ $result = mysqli_query($con, $select);
 
 echo "<table style=\"width:100%; border-spacing:0;\"><tr><th><a onclick=\"ordenarTabla('id_empresa')\">ID</a></th><th><a onclick=\"ordenarTabla('nombre')\">Empresa</a></th><th><a onclick=\"ordenarTabla('cliente')\">Cliente</a></th><th><a onclick=\"ordenarTabla('vendedor')\">Vendedor</a></th><th><a onclick=\"ordenarTabla('correo')\">Correo</a></th><th><a onclick=\"ordenarTabla('telefono')\">Telefono</a></th><th><a onclick=\"ordenarTabla('direccion')\">Dirección</a></th></tr>";
 
-
+$contador = 0;
 while($row = mysqli_fetch_array($result))
   {
   echo "<tr>";
+  echo "<td><input class=\"checkbox\" type=\"checkbox\" id=\"" . $contador . "\" name=\"" . $row[id_empresa] . "\" onclick=\"agregarDel(" . $contador . ")\"/></td>";
   echo "<td>" . $row[id_empresa] . "</td>";
   echo "<td>" . $row[nombre] . "</td>";
   echo "<td>" . $row[cliente] . "</td>";
@@ -32,6 +33,7 @@ while($row = mysqli_fetch_array($result))
   echo "<td>" . $row[telefono] . "</td>";
   echo "<td>" . $row[direccion] . "</td>";
   echo "</tr>";
+$contador = $contador + 1;
 
   }
 echo "</table>";
